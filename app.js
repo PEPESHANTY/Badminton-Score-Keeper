@@ -29,12 +29,14 @@ function updateScores(player, opponent){
     }
 }
 function winBy2(player,opponent){
+    count=0;
     if (player.score === opponent.score && player.score === winningScore - 1) { // checks for contidion
        winningScore++;
+       count++;
        playto.selectedOptions[0].value = winningScore; //changes selected option value and text reflecting the new final score
        playto.classList.add('overtime'); // overtime styling
        playto.selectedOptions[0].innerText = `Tie BREAK to ${winningScore}`; 
- 
+       return count;
     }
  }
 
@@ -64,6 +66,25 @@ function reset(){
         p.display.textContent = 0;
         p.display.classList.remove('has-text-success','has-text-danger');
         p.button.disabled = false;
+        playto.classList.remove('overtime');
+        playto.selectedOptions[0].innerText = winningScore;
+        playto[0].value =5;
+        playto[0].innerText =5;
+        playto[1].value =7;
+        playto[1].innerText =7;
+        playto[2].value =11;
+        playto[2].innerText =11;
+        playto[3].value =15;
+        playto[3].innerText =15;
+        playto[4].value =21;
+        playto[4].innerText =21;
+
+        // Could have used if score were in pattern
+        // for (let i=0; i <=6; i++){
+        //     playto[i].value = 5 + i;
+        //     playto[i].innerText = 5 + i;
+        //  }
+
     }
 
 
